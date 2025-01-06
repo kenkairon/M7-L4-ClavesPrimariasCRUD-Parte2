@@ -97,7 +97,7 @@ Educativo y de Aprendizaje Personal
             model = Author
             fields = '__all__'
 
-14. app2/views.py
+14. app1/views.py
     ```bash
     from rest_framework import viewsets
     from .models import Author
