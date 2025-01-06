@@ -52,34 +52,31 @@ Educativo y de Aprendizaje Personal
 
 10. Configuración de crud/settings.py 
     ```bash 
-    INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'rest_framework',
-    'drf_spectacular',
-    'app1',
-    'app2',
-    'docs',
-    ]
-    REST_FRAMEWORK = {
-        'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    }
+        INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'rest_framework',
+        'drf_spectacular',
+        'app1',
+        'app2',
+        'docs',
+        ]
+        REST_FRAMEWORK = {
+            'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+        }
 
 11. Hacemos las migraciones correspondientes
     ```bash
     python manage.py makemigrations
     python manage.py migrate
 
-
-
-
 # Creación del Modelo 
 
-14. en app1/models.py
+12. en app1/models.py
     ```bash
    from django.db import models
 
@@ -90,7 +87,7 @@ Educativo y de Aprendizaje Personal
         def __str__(self):
             return f"{self.first_name} {self.last_name}"
 
-15. Creamos el serializer.py en app1/serializer.py
+13. Creamos el serializer.py en app1/serializer.py
     ```bash
     from rest_framework import serializers
     from .models import Author
@@ -100,7 +97,7 @@ Educativo y de Aprendizaje Personal
             model = Author
             fields = '__all__'
 
-16. app2/views.py
+14. app2/views.py
     ```bash
     from rest_framework import viewsets
     from .models import Author
@@ -111,7 +108,7 @@ Educativo y de Aprendizaje Personal
         queryset = Author.objects.all()
         serializer_class = AuthorSerializer
 
-17. en app2/models.py
+15. en app2/models.py
     ```bash
     from django.db import models
     from app1.models import Author
@@ -124,7 +121,7 @@ Educativo y de Aprendizaje Personal
         def __str__(self):
             return self.title
 
-18. app2/serializers.py
+16. app2/serializers.py
     ```bash
     from rest_framework import serializers
     from .models import Book
@@ -133,7 +130,7 @@ Educativo y de Aprendizaje Personal
         class Meta:
             model = Book
             fields = '__all__'
-19. app2/views.py
+17. app2/views.py
     ```bash 
     from rest_framework import viewsets
     from .models import Book
@@ -143,7 +140,7 @@ Educativo y de Aprendizaje Personal
         queryset = Book.objects.all()
         serializer_class = BookSerializer
 
-20. docs/urls.py
+18. docs/urls.py
     ```bash 
     from django.urls import path
     from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
@@ -154,9 +151,9 @@ Educativo y de Aprendizaje Personal
         path('swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
         path('redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     ]
-21. Ejecuta las migraciones para aplicar estos cambios a la base de datos:
+19. Ejecuta las migraciones para aplicar estos cambios a la base de datos:
     ```bash 
     python manage.py makemigrations
     python manage.py migrate
 
-22. Navegar en las rutas http://127.0.0.1:8000/api/redoc/   http://127.0.0.1:8000/api/swagger-ui/  http://127.0.0.1:8000/api/schema/ este último descarga un archivo
+20. Navegar en las rutas http://127.0.0.1:8000/api/redoc/   http://127.0.0.1:8000/api/swagger-ui/  http://127.0.0.1:8000/api/schema/ este último descarga un archivo
