@@ -6,8 +6,6 @@ Educativo y de Aprendizaje Personal
 - [Tecnologías](#Tecnologías)
 - [Configuración Inicial](#configuración-Inicial)
 - [Creación del Modelo](#creación-del-modelo)
-- [Creación de Vistas](#creación-de-vistas)
-
 ---
 # Tecnologías
 - Django: Framework web en Python.
