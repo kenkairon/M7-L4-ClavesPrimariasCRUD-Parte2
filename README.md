@@ -78,7 +78,7 @@ Educativo y de Aprendizaje Personal
 
 12. en app1/models.py
     ```bash
-   from django.db import models
+    from django.db import models
 
     class Author(models.Model):
         first_name = models.CharField(max_length=100)
